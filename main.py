@@ -150,12 +150,23 @@ class picture:
         plt.savefig(f"picture{count + 1}.png")
 
     @staticmethod
+    def get_file_list(folder_path):
+        # Получаем список файлов и папок в указанной директории
+        items = os.listdir(folder_path)
+
+        # Отфильтровываем только файлы
+        files = [item for item in items if os.path.isfile(os.path.join(folder_path, item))]
+
+        return files
+
+    @staticmethod
     def get_last_picture():
-        ...
+        pic_arr = picture.get_file_list('Images')
+        pic_arr = sorted(list(map((lambda x: x.split('.png')[0]), pic_arr)))
+        return f'{pic_arr[-1]}.png'
 
-    # Пример использования класса ExcelDatabase
 
-
+# Пример использования класса ExcelDatabase
 db = ExcelDatabase('DB.db')
 
 # Создание таблицы с названием 'excel_data'
@@ -178,3 +189,4 @@ table_name = 'Октябрьский'
 result = db.create_dct_from_table(db_name, table_name)
 print(result)
 print(len(result['Год']))
+
