@@ -3,42 +3,70 @@ import pandas as pd
 
 
 class ExcelDatabase:
+    """
+    Класс ExcelDatabase представляет базу данных, способную загружать данные из файлов Excel.
+
+    Атрибуты:
+    - conn: объект подключения к базе данных SQLite
+    - cursor: объект для выполнения операций базы данных
+
+    Методы:
+    - __init__(db_name): инициализирует объект ExcelDatabase с указанным именем базы данных SQLite
+    - create_table(table_name): создает таблицу с указанным именем в базе данных
+    - load_excel_data(file_path, table_name): загружает данные из файла Excel в указанную таблицу базы данных
+    - get_table_names(): возвращает список названий таблиц в базе данных
+    - close_connection(): закрывает соединение с базой данных
+    """
+
     def __init__(self, db_name):
-        # Подключение к базе данных SQLite
+        """
+        Инициализирует объект ExcelDatabase с указанным именем базы данных SQLite.
+
+        Параметры:
+        - db_name (строка): имя базы данных SQLite
+        """
         self.conn = sqlite3.connect(db_name)
         self.cursor = self.conn.cursor()
 
     def create_table(self, table_name):
-        # Создание таблицы для хранения данных из Excel
+        """
+        Создает таблицу с указанным именем в базе данных.
+
+        Параметры:
+        - table_name (строка): имя таблицы
+        """
         query = f"CREATE TABLE IF NOT EXISTS {table_name} (file_name TEXT, column1 TEXT, column2 TEXT, column3 TEXT)"
         self.cursor.execute(query)
         self.conn.commit()
 
     def load_excel_data(self, file_path, table_name):
-        # Чтение файла Excel с помощью Pandas
+        """
+        Загружает данные из файла Excel в указанную таблицу базы данных.
+
+        Параметры:
+        - file_path (строка): путь к файлу Excel
+        - table_name (строка): имя таблицы, в которую будут загружены данные
+        """
         df = pd.read_excel(file_path)
-
-        # Получение списка столбцов в Excel
         columns = df.columns.tolist()
-
-        # Создание списка значений для каждого столбца
         values = []
         for column in columns:
             column_values = df[column].tolist()
             values.append(column_values)
-
-        # Вставка данных в таблицу базы данных
         for i in range(len(values[0])):
             insert_data = [file_path] + [values[j][i] for j in range(len(values))]
             query = f"INSERT INTO {table_name} VALUES (?, ?, ?, ?)"
             self.cursor.execute(query, insert_data)
-
-        # Сохранение изменений
         self.conn.commit()
         print('Данные из файла Excel успешно загружены в базу данных.')
 
     def get_table_names(self):
-        # Получение названий таблиц в базе данных
+        """
+        Возвращает список названий таблиц в базе данных.
+
+        Возвращаемое значение:
+        - table_names (список строк): список названий таблиц
+        """
         query = "SELECT name FROM sqlite_master WHERE type='table'"
         self.cursor.execute(query)
         tables = self.cursor.fetchall()
@@ -46,7 +74,9 @@ class ExcelDatabase:
         return table_names
 
     def close_connection(self):
-        # Закрытие соединения с базой данных
+        """
+        Закрывает соединение с базой данных.
+        """
         self.conn.close()
 
 
