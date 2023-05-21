@@ -1,7 +1,8 @@
+import os
 import sqlite3
 import pandas as pd
+import matplotlib.pyplot as plt
 from loguru import logger
-
 
 logger.add(
     'errors.log',
@@ -25,6 +26,7 @@ class ExcelDatabase:
     - get_table_names(): возвращает список названий таблиц в базе данных
     - close_connection(): закрывает соединение с базой данных
     """
+
     @logger.catch
     def __init__(self, db_name):
         """
@@ -121,7 +123,6 @@ class ExcelDatabase:
         # Возвращение словаря
         return dictionary
 
-
     @logger.catch
     def close_connection(self):
         """
@@ -130,7 +131,31 @@ class ExcelDatabase:
         self.conn.close()
 
 
-# Пример использования класса ExcelDatabase
+class picture:
+    @staticmethod
+    def create_picture(x, y, label, x_info, y_info):
+        fig, ax = plt.subplots()
+        ax.plot(y, x, '.-')
+        ax.grid()
+        ax.set_xlabel(x_info, fontsize=15, color='red', )
+        ax.set_ylabel(y_info, fontsize=15, color='red', )
+        ax.set_title(label)
+        items = os.listdir('Images')
+        # Перебираем все элементы
+        count = 0
+        for item in items:
+            # Проверяем, является ли текущий элемент файлом
+            if os.path.isfile(os.path.join('Images', item)):
+                count += 1
+        plt.savefig(f"picture{count + 1}.png")
+
+    @staticmethod
+    def get_last_picture():
+        ...
+
+    # Пример использования класса ExcelDatabase
+
+
 db = ExcelDatabase('DB.db')
 
 # Создание таблицы с названием 'excel_data'
@@ -146,7 +171,6 @@ print('Названия таблиц в базе данных:', table_names)
 
 # Закрытие соединения с базой данных
 db.close_connection()
-
 
 # Пример использования функции
 db_name = 'DB.db'
