@@ -8,7 +8,6 @@ logger.add(
     format='{time} {level} {message}',
     level='DEBUG'
 )
-logger.info('Бот запущен')
 
 
 class ExcelDatabase:
@@ -45,12 +44,12 @@ class ExcelDatabase:
         Параметры:
         - table_name (строка): имя таблицы
         """
-        query = f"CREATE TABLE IF NOT EXISTS {table_name} ({column1_name} TEXT, {column2_name} TEXT)"
+        query = f"CREATE TABLE IF NOT EXISTS {table_name} ({column1_name} REAL, {column2_name} REAL)"
         self.cursor.execute(query)
         self.conn.commit()
 
     @logger.catch
-    def load_excel_data(self, file_path, table_name):
+    def load_excel_data(self, file_path):
         """
         Загружает данные из файла Excel в указанную таблицу базы данных.
 
@@ -59,6 +58,12 @@ class ExcelDatabase:
         - table_name (строка): имя таблицы, в которую будут загружены данные
         """
         df = pd.read_excel(file_path)
+        columns_names = df.columns.tolist()
+        table_name = file_path.split('.')[0]
+        column1_name = columns_names[0].replace(' ', '_')
+        column2_name = columns_names[1].replace(' ', '_')
+        self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+
         columns = df.columns.tolist()
         values = []
         for column in columns:
@@ -89,6 +94,34 @@ class ExcelDatabase:
         table_names = [table[0] for table in tables]
         return table_names
 
+    def create_dct_from_table(self, path, table_name):
+        # Установка соединения с базой данных
+        conn = sqlite3.connect(path)
+        cursor = conn.cursor()
+
+        # Получение списка названий столбцов таблицы
+        query = f"PRAGMA table_info({table_name})"
+        cursor.execute(query)
+        column_names = [column[1] for column in cursor.fetchall()]
+
+        # Создание пустого словаря
+        dictionary = {}
+
+        # Заполнение словаря данными из таблицы
+        for column in column_names:
+            query = f"SELECT {column} FROM {table_name}"
+            cursor.execute(query)
+            column_data = [row[0] for row in cursor.fetchall()]
+            dictionary[column] = column_data
+
+        # Закрытие соединения с базой данных
+        cursor.close()
+        conn.close()
+
+        # Возвращение словаря
+        return dictionary
+
+
     @logger.catch
     def close_connection(self):
         """
@@ -101,11 +134,11 @@ class ExcelDatabase:
 db = ExcelDatabase('DB.db')
 
 # Создание таблицы с названием 'excel_data'
-db.create_table(table_name='excel_data123', column1_name='Год', column2_name='Пшеница_яровая')
+# db.create_table(table_name='excel_data1234', column1_name='Год', column2_name='Пшеница_яровая')
 
 # Загрузка данных из файла Excel в таблицу 'excel_data'
 file_path = 'Октябрьский.xlsx'
-db.load_excel_data(file_path=file_path, table_name='excel_data123')
+db.load_excel_data(file_path=file_path)
 
 # Получение названий таблиц в базе данных
 table_names = db.get_table_names()
@@ -113,3 +146,11 @@ print('Названия таблиц в базе данных:', table_names)
 
 # Закрытие соединения с базой данных
 db.close_connection()
+
+
+# Пример использования функции
+db_name = 'DB.db'
+table_name = 'Октябрьский'
+result = db.create_dct_from_table(db_name, table_name)
+print(result)
+print(len(result['Год']))
