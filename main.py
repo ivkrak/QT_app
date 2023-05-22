@@ -143,6 +143,15 @@ class ExcelDatabase:
 class picture:
     @staticmethod
     def create_picture(x, y, label, x_info, y_info):
+        """
+        :param x: список со значениями по оси x
+        :param y: список со значениями по оси y
+        :param label: название графика
+        :param x_info: описания данных по оси x
+        :param y_info: описания данных по оси y
+        :return: путь до графика
+        """
+
         fig, ax = plt.subplots()
         ax.plot(y, x, '.-')
         ax.grid()
@@ -156,7 +165,8 @@ class picture:
             # Проверяем, является ли текущий элемент файлом
             if os.path.isfile(os.path.join('Images', item)):
                 count += 1
-        plt.savefig(f"picture{count + 1}.png")
+        plt.savefig(f"Images/picture{count + 1}.png")
+        return f"Images/picture{count + 1}.png"
 
     @staticmethod
     def get_file_list(folder_path):
