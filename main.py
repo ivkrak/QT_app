@@ -81,6 +81,7 @@ class ExcelDatabase:
 
         self.conn.commit()
         print('Данные из файла Excel успешно загружены в базу данных.')
+        return table_name
 
     @logger.catch
     def get_table_names(self):
@@ -166,27 +167,28 @@ class picture:
         return f'{pic_arr[-1]}.png'
 
 
-# Пример использования класса ExcelDatabase
-db = ExcelDatabase('DB.db')
+if __name__ == "main":
+    # Пример использования класса ExcelDatabase
+    db = ExcelDatabase('DB.db')
 
-# Создание таблицы с названием 'excel_data'
-# db.create_table(table_name='excel_data1234', column1_name='Год', column2_name='Пшеница_яровая')
+    # Создание таблицы с названием 'excel_data'
+    # db.create_table(table_name='excel_data1234', column1_name='Год', column2_name='Пшеница_яровая')
 
-# Загрузка данных из файла Excel в таблицу 'excel_data'
-file_path = 'Октябрьский.xlsx'
-db.load_excel_data(file_path=file_path)
+    # Загрузка данных из файла Excel в таблицу 'excel_data'
+    file_path = 'Октябрьский.xlsx'
+    db.load_excel_data(file_path=file_path)
 
-# Получение названий таблиц в базе данных
-table_names = db.get_table_names()
-print('Названия таблиц в базе данных:', table_names)
+    # Получение названий таблиц в базе данных
+    table_names = db.get_table_names()
+    print('Названия таблиц в базе данных:', table_names)
 
-# Закрытие соединения с базой данных
-db.close_connection()
+    # Закрытие соединения с базой данных
+    db.close_connection()
 
-# Пример использования функции
-db_name = 'DB.db'
-table_name = 'Октябрьский'
-result = db.create_dct_from_table(db_name, table_name)
-print(result)
-print(len(result['Год']))
+    # Пример использования функции
+    db_name = 'DB.db'
+    table_name = 'Октябрьский'
+    result = db.create_dct_from_table(db_name, table_name)
+    print(result)
+    print(len(result['Год']))
 
