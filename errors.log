@@ -1,0 +1,770 @@
+2023-05-22T22:24:57.700003+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (6550), thread 'MainThread' (4485152256):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x1118fa480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x118f60b30>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11865b750>>
+           └ <tkinter.CallWrapper object at 0x119086bd0>
+
+> File "/Users/ivkrak/programming/kakasha_project/app.py", line 16, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ 'Свердловский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x1189ba3e0>
+                 └ <main.ExcelDatabase object at 0x119086b90>
+
+  File "/Users/ivkrak/programming/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ 'Свердловский.xlsx'
+         │  └ <function read_excel at 0x117d49800>
+         └ <module 'pandas' from '/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/__init__.py'>
+
+  File "/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ 'Свердловский.xlsx'
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x117e5c4a0>
+  File "/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 1371, in inspect_excel_format
+    with get_handle(
+         └ <function get_handle at 0x1177ebba0>
+  File "/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/io/common.py", line 868, in get_handle
+    handle = open(handle, ioargs.mode)
+                  │       │      └ 'rb'
+                  │       └ IOArgs(filepath_or_buffer='Свердловский.xlsx', encoding='utf-8', mode='rb', compression={'method': None}, should_close=False)
+                  └ 'Свердловский.xlsx'
+
+FileNotFoundError: [Errno 2] No such file or directory: 'Свердловский.xlsx'
+2023-05-22T22:27:06.904321+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (6762), thread 'MainThread' (4644998656):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 80, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x119d4a480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x1213bc8b0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x1213b9050>>
+           └ <tkinter.CallWrapper object at 0x1214e4710>
+
+> File "/Users/ivkrak/programming/kakasha_project/app.py", line 25, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ 'Свердловский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x120e159e0>
+                 └ <main.ExcelDatabase object at 0x1214e4450>
+
+  File "/Users/ivkrak/programming/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ 'Свердловский.xlsx'
+         │  └ <function read_excel at 0x120200e00>
+         └ <module 'pandas' from '/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/__init__.py'>
+
+  File "/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ 'Свердловский.xlsx'
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x12022fa60>
+  File "/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 1371, in inspect_excel_format
+    with get_handle(
+         └ <function get_handle at 0x11fc4f1a0>
+  File "/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/io/common.py", line 868, in get_handle
+    handle = open(handle, ioargs.mode)
+                  │       │      └ 'rb'
+                  │       └ IOArgs(filepath_or_buffer='Свердловский.xlsx', encoding='utf-8', mode='rb', compression={'method': None}, should_close=False)
+                  └ 'Свердловский.xlsx'
+
+FileNotFoundError: [Errno 2] No such file or directory: 'Свердловский.xlsx'
+2023-05-22T22:27:06.904321+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (6762), thread 'MainThread' (4644998656):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 80, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x119d4a480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x1213bc8b0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x1213b9050>>
+           └ <tkinter.CallWrapper object at 0x1214e4710>
+
+> File "/Users/ivkrak/programming/kakasha_project/app.py", line 25, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ 'Свердловский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x120e159e0>
+                 └ <main.ExcelDatabase object at 0x1214e4450>
+
+  File "/Users/ivkrak/programming/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ 'Свердловский.xlsx'
+         │  └ <function read_excel at 0x120200e00>
+         └ <module 'pandas' from '/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/__init__.py'>
+
+  File "/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ 'Свердловский.xlsx'
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x12022fa60>
+  File "/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 1371, in inspect_excel_format
+    with get_handle(
+         └ <function get_handle at 0x11fc4f1a0>
+  File "/Users/ivkrak/programming/kakasha_project/venv/lib/python3.11/site-packages/pandas/io/common.py", line 868, in get_handle
+    handle = open(handle, ioargs.mode)
+                  │       │      └ 'rb'
+                  │       └ IOArgs(filepath_or_buffer='Свердловский.xlsx', encoding='utf-8', mode='rb', compression={'method': None}, should_close=False)
+                  └ 'Свердловский.xlsx'
+
+FileNotFoundError: [Errno 2] No such file or directory: 'Свердловский.xlsx'
+2023-05-22T22:27:06.914142+0800 ERROR An error has been caught in function '__call__', process 'MainProcess' (6762), thread 'MainThread' (4644998656):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 80, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x119d4a480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x1213bc8b0>
+    └ <tkinter.Tk object .>
+
+> File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x1213b9050>>
+           └ <tkinter.CallWrapper object at 0x1214e4710>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 28, in import_excel
+    rows = [[dct[keys[0]][i], dct[keys[1]][j]] for i in range(len(dct[keys[0]])) for j in range(len(dct[keys[1]]))
+             │   │            │   │                               │   │                             │   └ []
+             │   │            │   │                               │   │                             └ {}
+             │   │            │   │                               │   └ []
+             │   │            │   │                               └ {}
+             │   │            │   └ []
+             │   │            └ {}
+             │   └ []
+             └ {}
+
+IndexError: list index out of range
+2023-05-22T22:27:06.914142+0800 ERROR An error has been caught in function '__call__', process 'MainProcess' (6762), thread 'MainThread' (4644998656):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 80, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x119d4a480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x1213bc8b0>
+    └ <tkinter.Tk object .>
+
+> File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x1213b9050>>
+           └ <tkinter.CallWrapper object at 0x1214e4710>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 28, in import_excel
+    rows = [[dct[keys[0]][i], dct[keys[1]][j]] for i in range(len(dct[keys[0]])) for j in range(len(dct[keys[1]]))
+             │   │            │   │                               │   │                             │   └ []
+             │   │            │   │                               │   │                             └ {}
+             │   │            │   │                               │   └ []
+             │   │            │   │                               └ {}
+             │   │            │   └ []
+             │   │            └ {}
+             │   └ []
+             └ {}
+
+IndexError: list index out of range
+2023-05-22T22:30:11.576889+0800 ERROR An error has been caught in function '__call__', process 'MainProcess' (6762), thread 'MainThread' (4644998656):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 80, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x119d4a480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x1213bc8b0>
+    └ <tkinter.Tk object .>
+
+> File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.export_excel of <__main__.App object at 0x1213b9050>>
+           └ <tkinter.CallWrapper object at 0x1214e4590>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 35, in export_excel
+    with open('Ноябрьский.xlsx', 'rb') as f:
+
+FileNotFoundError: [Errno 2] No such file or directory: 'Ноябрьский.xlsx'
+2023-05-22T22:30:11.576889+0800 ERROR An error has been caught in function '__call__', process 'MainProcess' (6762), thread 'MainThread' (4644998656):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 80, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x119d4a480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x1213bc8b0>
+    └ <tkinter.Tk object .>
+
+> File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.export_excel of <__main__.App object at 0x1213b9050>>
+           └ <tkinter.CallWrapper object at 0x1214e4590>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 35, in export_excel
+    with open('Ноябрьский.xlsx', 'rb') as f:
+
+FileNotFoundError: [Errno 2] No such file or directory: 'Ноябрьский.xlsx'
+2023-05-22T22:30:14.220754+0800 ERROR An error has been caught in function '__call__', process 'MainProcess' (6762), thread 'MainThread' (4644998656):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 80, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x119d4a480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x1213bc8b0>
+    └ <tkinter.Tk object .>
+
+> File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.export_excel of <__main__.App object at 0x1213b9050>>
+           └ <tkinter.CallWrapper object at 0x1214e4590>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 35, in export_excel
+    with open('Ноябрьский.xlsx', 'rb') as f:
+
+FileNotFoundError: [Errno 2] No such file or directory: 'Ноябрьский.xlsx'
+2023-05-22T22:30:14.220754+0800 ERROR An error has been caught in function '__call__', process 'MainProcess' (6762), thread 'MainThread' (4644998656):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 80, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x119d4a480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x1213bc8b0>
+    └ <tkinter.Tk object .>
+
+> File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.export_excel of <__main__.App object at 0x1213b9050>>
+           └ <tkinter.CallWrapper object at 0x1214e4590>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 35, in export_excel
+    with open('Ноябрьский.xlsx', 'rb') as f:
+
+FileNotFoundError: [Errno 2] No such file or directory: 'Ноябрьский.xlsx'
+2023-05-22T22:35:33.674029+0800 ERROR An error has been caught in function 'load_excel_data', process 'MainProcess' (6899), thread 'MainThread' (4548967936):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 81, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x11431e480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x11b984830>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11b6c9150>>
+           └ <tkinter.CallWrapper object at 0x11baad1d0>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 26, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ '/Users/ivkrak/Desktop/Свердловский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x11b3dd9e0>
+                 └ <main.ExcelDatabase object at 0x11b981910>
+
+> File "/Users/ivkrak/programming/kakasha_project/main.py", line 67, in load_excel_data
+    self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+    │    │                       │                        │                          └ 'Пшеница_яровая'
+    │    │                       │                        └ 'Год'
+    │    │                       └ '/Users/ivkrak/Desktop/Свердловский'
+    │    └ <function ExcelDatabase.create_table at 0x11b3dd620>
+    └ <main.ExcelDatabase object at 0x11b981910>
+
+  File "/Users/ivkrak/programming/kakasha_project/main.py", line 50, in create_table
+    self.cursor.execute(query)
+    │    │      │       └ 'CREATE TABLE IF NOT EXISTS /Users/ivkrak/Desktop/Свердловский (Год REAL, Пшеница_яровая REAL)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x11b986940>
+    └ <main.ExcelDatabase object at 0x11b981910>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T22:35:33.674029+0800 ERROR An error has been caught in function 'load_excel_data', process 'MainProcess' (6899), thread 'MainThread' (4548967936):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 81, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x11431e480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x11b984830>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11b6c9150>>
+           └ <tkinter.CallWrapper object at 0x11baad1d0>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 26, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ '/Users/ivkrak/Desktop/Свердловский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x11b3dd9e0>
+                 └ <main.ExcelDatabase object at 0x11b981910>
+
+> File "/Users/ivkrak/programming/kakasha_project/main.py", line 67, in load_excel_data
+    self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+    │    │                       │                        │                          └ 'Пшеница_яровая'
+    │    │                       │                        └ 'Год'
+    │    │                       └ '/Users/ivkrak/Desktop/Свердловский'
+    │    └ <function ExcelDatabase.create_table at 0x11b3dd620>
+    └ <main.ExcelDatabase object at 0x11b981910>
+
+  File "/Users/ivkrak/programming/kakasha_project/main.py", line 50, in create_table
+    self.cursor.execute(query)
+    │    │      │       └ 'CREATE TABLE IF NOT EXISTS /Users/ivkrak/Desktop/Свердловский (Год REAL, Пшеница_яровая REAL)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x11b986940>
+    └ <main.ExcelDatabase object at 0x11b981910>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T22:35:33.681773+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (6899), thread 'MainThread' (4548967936):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 81, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x11431e480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x11b984830>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11b6c9150>>
+           └ <tkinter.CallWrapper object at 0x11baad1d0>
+
+> File "/Users/ivkrak/programming/kakasha_project/app.py", line 26, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ '/Users/ivkrak/Desktop/Свердловский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x11b3dd9e0>
+                 └ <main.ExcelDatabase object at 0x11b981910>
+
+  File "/Users/ivkrak/programming/kakasha_project/main.py", line 80, in load_excel_data
+    self.cursor.execute(query, insert_data)
+    │    │      │       │      └ [1997, 14.4]
+    │    │      │       └ 'INSERT INTO /Users/ivkrak/Desktop/Свердловский VALUES (?, ?)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x11b986940>
+    └ <main.ExcelDatabase object at 0x11b981910>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T22:35:33.681773+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (6899), thread 'MainThread' (4548967936):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 81, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x11431e480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x11b984830>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11b6c9150>>
+           └ <tkinter.CallWrapper object at 0x11baad1d0>
+
+> File "/Users/ivkrak/programming/kakasha_project/app.py", line 26, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ '/Users/ivkrak/Desktop/Свердловский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x11b3dd9e0>
+                 └ <main.ExcelDatabase object at 0x11b981910>
+
+  File "/Users/ivkrak/programming/kakasha_project/main.py", line 80, in load_excel_data
+    self.cursor.execute(query, insert_data)
+    │    │      │       │      └ [1997, 14.4]
+    │    │      │       └ 'INSERT INTO /Users/ivkrak/Desktop/Свердловский VALUES (?, ?)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x11b986940>
+    └ <main.ExcelDatabase object at 0x11b981910>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T22:35:33.684197+0800 ERROR An error has been caught in function '__call__', process 'MainProcess' (6899), thread 'MainThread' (4548967936):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 81, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x11431e480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x11b984830>
+    └ <tkinter.Tk object .>
+
+> File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11b6c9150>>
+           └ <tkinter.CallWrapper object at 0x11baad1d0>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 29, in import_excel
+    rows = [[dct[keys[0]][i], dct[keys[1]][j]] for i in range(len(dct[keys[0]])) for j in range(len(dct[keys[1]]))
+             │   │            │   │                               │   │                             │   └ []
+             │   │            │   │                               │   │                             └ {}
+             │   │            │   │                               │   └ []
+             │   │            │   │                               └ {}
+             │   │            │   └ []
+             │   │            └ {}
+             │   └ []
+             └ {}
+
+IndexError: list index out of range
+2023-05-22T22:35:33.684197+0800 ERROR An error has been caught in function '__call__', process 'MainProcess' (6899), thread 'MainThread' (4548967936):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 81, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x11431e480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x11b984830>
+    └ <tkinter.Tk object .>
+
+> File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11b6c9150>>
+           └ <tkinter.CallWrapper object at 0x11baad1d0>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 29, in import_excel
+    rows = [[dct[keys[0]][i], dct[keys[1]][j]] for i in range(len(dct[keys[0]])) for j in range(len(dct[keys[1]]))
+             │   │            │   │                               │   │                             │   └ []
+             │   │            │   │                               │   │                             └ {}
+             │   │            │   │                               │   └ []
+             │   │            │   │                               └ {}
+             │   │            │   └ []
+             │   │            └ {}
+             │   └ []
+             └ {}
+
+IndexError: list index out of range
+2023-05-22T22:39:19.915541+0800 ERROR An error has been caught in function 'load_excel_data', process 'MainProcess' (6959), thread 'MainThread' (4687240704):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 81, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x117696480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x11e72a0b0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11e23f2d0>>
+           └ <tkinter.CallWrapper object at 0x11e83b510>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 26, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ '/Users/ivkrak/Desktop/Свердловский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x11e705a80>
+                 └ <main.ExcelDatabase object at 0x11e83b250>
+
+> File "/Users/ivkrak/programming/kakasha_project/main.py", line 67, in load_excel_data
+    self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+    │    │                       │                        │                          └ 'Пшеница_яровая'
+    │    │                       │                        └ 'Год'
+    │    │                       └ '/Users/ivkrak/Desktop/Свердловский'
+    │    └ <function ExcelDatabase.create_table at 0x11e7056c0>
+    └ <main.ExcelDatabase object at 0x11e83b250>
+
+  File "/Users/ivkrak/programming/kakasha_project/main.py", line 50, in create_table
+    self.cursor.execute(query)
+    │    │      │       └ 'CREATE TABLE IF NOT EXISTS /Users/ivkrak/Desktop/Свердловский (Год REAL, Пшеница_яровая REAL)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x11e83cdc0>
+    └ <main.ExcelDatabase object at 0x11e83b250>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T22:39:19.915541+0800 ERROR An error has been caught in function 'load_excel_data', process 'MainProcess' (6959), thread 'MainThread' (4687240704):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 81, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x117696480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x11e72a0b0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11e23f2d0>>
+           └ <tkinter.CallWrapper object at 0x11e83b510>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 26, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ '/Users/ivkrak/Desktop/Свердловский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x11e705a80>
+                 └ <main.ExcelDatabase object at 0x11e83b250>
+
+> File "/Users/ivkrak/programming/kakasha_project/main.py", line 67, in load_excel_data
+    self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+    │    │                       │                        │                          └ 'Пшеница_яровая'
+    │    │                       │                        └ 'Год'
+    │    │                       └ '/Users/ivkrak/Desktop/Свердловский'
+    │    └ <function ExcelDatabase.create_table at 0x11e7056c0>
+    └ <main.ExcelDatabase object at 0x11e83b250>
+
+  File "/Users/ivkrak/programming/kakasha_project/main.py", line 50, in create_table
+    self.cursor.execute(query)
+    │    │      │       └ 'CREATE TABLE IF NOT EXISTS /Users/ivkrak/Desktop/Свердловский (Год REAL, Пшеница_яровая REAL)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x11e83cdc0>
+    └ <main.ExcelDatabase object at 0x11e83b250>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T22:39:19.921967+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (6959), thread 'MainThread' (4687240704):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 81, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x117696480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x11e72a0b0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11e23f2d0>>
+           └ <tkinter.CallWrapper object at 0x11e83b510>
+
+> File "/Users/ivkrak/programming/kakasha_project/app.py", line 26, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ '/Users/ivkrak/Desktop/Свердловский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x11e705a80>
+                 └ <main.ExcelDatabase object at 0x11e83b250>
+
+  File "/Users/ivkrak/programming/kakasha_project/main.py", line 80, in load_excel_data
+    self.cursor.execute(query, insert_data)
+    │    │      │       │      └ [1997, 14.4]
+    │    │      │       └ 'INSERT INTO /Users/ivkrak/Desktop/Свердловский VALUES (?, ?)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x11e83cdc0>
+    └ <main.ExcelDatabase object at 0x11e83b250>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T22:39:19.921967+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (6959), thread 'MainThread' (4687240704):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 81, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x117696480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x11e72a0b0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11e23f2d0>>
+           └ <tkinter.CallWrapper object at 0x11e83b510>
+
+> File "/Users/ivkrak/programming/kakasha_project/app.py", line 26, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ '/Users/ivkrak/Desktop/Свердловский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x11e705a80>
+                 └ <main.ExcelDatabase object at 0x11e83b250>
+
+  File "/Users/ivkrak/programming/kakasha_project/main.py", line 80, in load_excel_data
+    self.cursor.execute(query, insert_data)
+    │    │      │       │      └ [1997, 14.4]
+    │    │      │       └ 'INSERT INTO /Users/ivkrak/Desktop/Свердловский VALUES (?, ?)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x11e83cdc0>
+    └ <main.ExcelDatabase object at 0x11e83b250>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T22:39:19.924763+0800 ERROR An error has been caught in function '__call__', process 'MainProcess' (6959), thread 'MainThread' (4687240704):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 81, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x117696480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x11e72a0b0>
+    └ <tkinter.Tk object .>
+
+> File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11e23f2d0>>
+           └ <tkinter.CallWrapper object at 0x11e83b510>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 29, in import_excel
+    rows = [[dct[keys[0]][i], dct[keys[1]][j]] for i in range(len(dct[keys[0]])) for j in range(len(dct[keys[1]]))
+             │   │            │   │                               │   │                             │   └ []
+             │   │            │   │                               │   │                             └ {}
+             │   │            │   │                               │   └ []
+             │   │            │   │                               └ {}
+             │   │            │   └ []
+             │   │            └ {}
+             │   └ []
+             └ {}
+
+IndexError: list index out of range
+2023-05-22T22:39:19.924763+0800 ERROR An error has been caught in function '__call__', process 'MainProcess' (6959), thread 'MainThread' (4687240704):
+Traceback (most recent call last):
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 81, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x117696480>
+    └ <tkinter.Tk object .>
+
+  File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1485, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x11e72a0b0>
+    └ <tkinter.Tk object .>
+
+> File "/usr/local/Cellar/python@3.11/3.11.3/Frameworks/Python.framework/Versions/3.11/lib/python3.11/tkinter/__init__.py", line 1948, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x11e23f2d0>>
+           └ <tkinter.CallWrapper object at 0x11e83b510>
+
+  File "/Users/ivkrak/programming/kakasha_project/app.py", line 29, in import_excel
+    rows = [[dct[keys[0]][i], dct[keys[1]][j]] for i in range(len(dct[keys[0]])) for j in range(len(dct[keys[1]]))
+             │   │            │   │                               │   │                             │   └ []
+             │   │            │   │                               │   │                             └ {}
+             │   │            │   │                               │   └ []
+             │   │            │   │                               └ {}
+             │   │            │   └ []
+             │   │            └ {}
+             │   └ []
+             └ {}
+
+IndexError: list index out of range

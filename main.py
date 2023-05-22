@@ -61,7 +61,14 @@ class ExcelDatabase:
         """
         df = pd.read_excel(file_path)
         columns_names = df.columns.tolist()
-        table_name = file_path.split('.')[0]
+        if '/' in file_path:
+            table_name = (file_path.split('/')[-1]).split('.')[0]
+        elif "\\" in file_path:
+            table_name = (file_path.split('\\')[-1]).split('.')[0]
+
+        print(f'{table_name=}')
+        print(f'{file_path=}')
+        #table_name = file_path.split('.')[0]
         column1_name = columns_names[0].replace(' ', '_')
         column2_name = columns_names[1].replace(' ', '_')
         self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
@@ -167,7 +174,7 @@ class picture:
         return f'{pic_arr[-1]}.png'
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     # Пример использования класса ExcelDatabase
     db = ExcelDatabase('DB.db')
 
