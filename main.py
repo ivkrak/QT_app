@@ -61,14 +61,15 @@ class ExcelDatabase:
         """
         df = pd.read_excel(file_path)
         columns_names = df.columns.tolist()
+        # region НА_ПРОВЕРКУ
         if '/' in file_path:
             table_name = (file_path.split('/')[-1]).split('.')[0]
         elif "\\" in file_path:
             table_name = (file_path.split('\\')[-1]).split('.')[0]
-
+        # endregion
         print(f'{table_name=}')
         print(f'{file_path=}')
-        #table_name = file_path.split('.')[0]
+        # table_name = file_path.split('.')[0]
         column1_name = columns_names[0].replace(' ', '_')
         column2_name = columns_names[1].replace(' ', '_')
         self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
@@ -198,4 +199,3 @@ if __name__ == "__main__":
     result = db.create_dct_from_table(db_name, table_name)
     print(result)
     print(len(result['Год']))
-
