@@ -1,3 +1,1256 @@
+2023-05-22T11:50:02.659002+0800 ERROR An error has been caught in function '<module>', process 'MainProcess' (18007), thread 'MainThread' (140062243645248):
+Traceback (most recent call last):
+
+  File "/usr/lib/python3.10/site-packages/pandas/compat/_optional.py", line 142, in import_optional_dependency
+    module = importlib.import_module(name)
+             │         │             └ 'openpyxl'
+             │         └ <function import_module at 0x7f62c8034940>
+             └ <module 'importlib' from '/usr/lib/python3.10/importlib/__init__.py'>
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           │          │           │    │        │        └ 0
+           │          │           │    │        └ None
+           │          │           │    └ 0
+           │          │           └ 'openpyxl'
+           │          └ <function _gcd_import at 0x7f62c80ef400>
+           └ <module '_frozen_importlib' (frozen)>
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+
+ModuleNotFoundError: No module named 'openpyxl'
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 3, in <module>
+    from main import *
+
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+
+> File "/home/nate/PycharmProjects/kakasha_project/main.py", line 177, in <module>
+    db.load_excel_data(file_path=file_path)
+    │  │                         └ 'Октябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f62adab3a30>
+    └ <main.ExcelDatabase object at 0x7f62af146380>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ 'Октябрьский.xlsx'
+         │  └ <function read_excel at 0x7f62af199090>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ 'Октябрьский.xlsx'
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1513, in __init__
+    self._reader = self._engines[engine](self._io, storage_options=storage_options)
+    │              │    │        │       │    │                    └ None
+    │              │    │        │       │    └ 'Октябрьский.xlsx'
+    │              │    │        │       └ <pandas.io.excel._base.ExcelFile object at 0x7f62adaa6e00>
+    │              │    │        └ 'openpyxl'
+    │              │    └ {'xlrd': <class 'pandas.io.excel._xlrd.XlrdReader'>, 'openpyxl': <class 'pandas.io.excel._openpyxl.OpenpyxlReader'>, 'odf': <...
+    │              └ <pandas.io.excel._base.ExcelFile object at 0x7f62adaa6e00>
+    └ <pandas.io.excel._base.ExcelFile object at 0x7f62adaa6e00>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_openpyxl.py", line 548, in __init__
+    import_optional_dependency("openpyxl")
+    └ <function import_optional_dependency at 0x7f62b0e65a20>
+  File "/usr/lib/python3.10/site-packages/pandas/compat/_optional.py", line 145, in import_optional_dependency
+    raise ImportError(msg)
+                      └ "Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl."
+
+ImportError: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+2023-05-22T11:50:30.112810+0800 ERROR An error has been caught in function 'load_excel_data', process 'MainProcess' (18075), thread 'MainThread' (140234217125696):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 58, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f8abc3f6e60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f8abb935630>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f8ab5e270a0>>
+           └ <tkinter.CallWrapper object at 0x7f8ab8b5e680>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 13, in import_excel
+    db.load_excel_data(file_path=file_path)
+    │  │                         └ 'Октябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f8ab8aeb7f0>
+    └ <main.ExcelDatabase object at 0x7f8ab8aec340>
+
+> File "/home/nate/PycharmProjects/kakasha_project/main.py", line 67, in load_excel_data
+    self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+    │    │                       │                        │                          └ 'Пшеница_яровая'
+    │    │                       │                        └ 'Год'
+    │    │                       └ 'Октябрьский'
+    │    └ <function ExcelDatabase.create_table at 0x7f8ab8aeb490>
+    └ <main.ExcelDatabase object at 0x7f8ab8aec340>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 50, in create_table
+    self.cursor.execute(query)
+    │    │      │       └ 'CREATE TABLE IF NOT EXISTS Октябрьский (Год REAL, Пшеница_яровая REAL)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f8ab8abcd40>
+    └ <main.ExcelDatabase object at 0x7f8ab8aec340>
+
+sqlite3.ProgrammingError: Cannot operate on a closed database.
+2023-05-22T11:50:30.121417+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (18075), thread 'MainThread' (140234217125696):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 58, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f8abc3f6e60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f8abb935630>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f8ab5e270a0>>
+           └ <tkinter.CallWrapper object at 0x7f8ab8b5e680>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 13, in import_excel
+    db.load_excel_data(file_path=file_path)
+    │  │                         └ 'Октябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f8ab8aeb7f0>
+    └ <main.ExcelDatabase object at 0x7f8ab8aec340>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 80, in load_excel_data
+    self.cursor.execute(query, insert_data)
+    │    │      │       │      └ [1997, 14.4]
+    │    │      │       └ 'INSERT INTO Октябрьский VALUES (?, ?)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f8ab8abcd40>
+    └ <main.ExcelDatabase object at 0x7f8ab8aec340>
+
+sqlite3.ProgrammingError: Cannot operate on a closed database.
+2023-05-22T11:57:19.489792+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (18938), thread 'MainThread' (140492046145344):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 65, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7fc6c3f16ef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7fc6bdb13830>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7fc6c07dde70>>
+           └ <tkinter.CallWrapper object at 0x7fc6bdb69750>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 16, in import_excel
+    db.load_excel_data(file_path=file_path)
+    │  │                         └ <_io.TextIOWrapper name='/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx' mode='r' encoding='UTF-8'>
+    │  └ <function ExcelDatabase.load_excel_data at 0x7fc6c07db880>
+    └ <main.ExcelDatabase object at 0x7fc6bdb69720>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ <_io.TextIOWrapper name='/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx' mode='r' encoding='UTF-8'>
+         │  └ <function read_excel at 0x7fc6c1559120>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ <_io.TextIOWrapper name='/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx' mode='r' encoding='UTF-8'>
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x7fc6c12e2950>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1376, in inspect_excel_format
+    buf = stream.read(PEEK_SIZE)
+          │      │    └ 8
+          │      └ <function _BytesIOWrapper.read at 0x7fc6c19e6ef0>
+          └ <pandas.io.common._BytesIOWrapper object at 0x7fc6bdb4ee30>
+  File "/usr/lib/python3.10/site-packages/pandas/io/common.py", line 1091, in read
+    bytestring = self.buffer.read(n).encode(self.encoding)
+                 │    │      │    │         │    └ 'utf-8'
+                 │    │      │    │         └ <pandas.io.common._BytesIOWrapper object at 0x7fc6bdb4ee30>
+                 │    │      │    └ 8
+                 │    │      └ <method 'read' of '_io.TextIOWrapper' objects>
+                 │    └ <_io.TextIOWrapper name='/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx' mode='r' encoding='UTF-8'>
+                 └ <pandas.io.common._BytesIOWrapper object at 0x7fc6bdb4ee30>
+  File "/usr/lib/python3.10/codecs.py", line 322, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+                         │    │              │     │    │       └ False
+                         │    │              │     │    └ 'strict'
+                         │    │              │     └ <encodings.utf_8.IncrementalDecoder object at 0x7fc6bdb69660>
+                         │    │              └ b'PK\x03\x04\x14\x00\x00\x00\x00\x00\x00\x00!\x00\xd8p\xed{\x96\x05\x00\x00\x96\x05\x00\x00\x13\x00\x00\x00[Content_Types].xm...
+                         │    └ <built-in function utf_8_decode>
+                         └ <encodings.utf_8.IncrementalDecoder object at 0x7fc6bdb69660>
+
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd8 in position 14: invalid continuation byte
+2023-05-22T12:03:52.042146+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (19713), thread 'MainThread' (140055973025600):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 67, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f613c396ef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f6135b43830>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f6135b7f7f0>>
+           └ <tkinter.CallWrapper object at 0x7f6135b998d0>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 18, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ <codecs.StreamReaderWriter object at 0x7f6135b997e0>
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f613880b880>
+    └ <main.ExcelDatabase object at 0x7f6135b998a0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ <codecs.StreamReaderWriter object at 0x7f6135b997e0>
+         │  └ <function read_excel at 0x7f6139589120>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ <codecs.StreamReaderWriter object at 0x7f6135b997e0>
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x7f61395d6950>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1375, in inspect_excel_format
+    stream.seek(0)
+    │      └ <function StreamReaderWriter.seek at 0x7f615237f370>
+    └ <codecs.StreamReaderWriter object at 0x7f6135b997e0>
+  File "/usr/lib/python3.10/codecs.py", line 733, in seek
+    self.stream.seek(offset, whence)
+    │    │      │    │       └ 0
+    │    │      │    └ 0
+    │    │      └ <method 'seek' of '_io.BufferedReader' objects>
+    │    └ <_io.BufferedReader name='/home/nate/PycharmProjects/kakasha_project/Октябрьский.xlsx'>
+    └ <codecs.StreamReaderWriter object at 0x7f6135b997e0>
+
+ValueError: seek of closed file
+2023-05-22T12:03:56.676543+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (19713), thread 'MainThread' (140055973025600):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 67, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f613c396ef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f6135b43830>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f6135b7f7f0>>
+           └ <tkinter.CallWrapper object at 0x7f6135b998d0>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 18, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ <codecs.StreamReaderWriter object at 0x7f6135b997e0>
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f613880b880>
+    └ <main.ExcelDatabase object at 0x7f613880df60>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ <codecs.StreamReaderWriter object at 0x7f6135b997e0>
+         │  └ <function read_excel at 0x7f6139589120>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ <codecs.StreamReaderWriter object at 0x7f6135b997e0>
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x7f61395d6950>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1375, in inspect_excel_format
+    stream.seek(0)
+    │      └ <function StreamReaderWriter.seek at 0x7f615237f370>
+    └ <codecs.StreamReaderWriter object at 0x7f6135b997e0>
+  File "/usr/lib/python3.10/codecs.py", line 733, in seek
+    self.stream.seek(offset, whence)
+    │    │      │    │       └ 0
+    │    │      │    └ 0
+    │    │      └ <method 'seek' of '_io.BufferedReader' objects>
+    │    └ <_io.BufferedReader name='/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'>
+    └ <codecs.StreamReaderWriter object at 0x7f6135b997e0>
+
+ValueError: seek of closed file
+2023-05-22T12:05:46.064493+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (19918), thread 'MainThread' (139956303071040):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 67, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f4a07212ef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f4a00ea7830>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f4a03b75ff0>>
+           └ <tkinter.CallWrapper object at 0x7f4a00f018d0>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 18, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ <codecs.StreamReaderWriter object at 0x7f4a00f017e0>
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f4a03b6f880>
+    └ <main.ExcelDatabase object at 0x7f4a00f018a0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ <codecs.StreamReaderWriter object at 0x7f4a00f017e0>
+         │  └ <function read_excel at 0x7f4a048ed120>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ <codecs.StreamReaderWriter object at 0x7f4a00f017e0>
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x7f4a04676950>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1375, in inspect_excel_format
+    stream.seek(0)
+    │      └ <function StreamReaderWriter.seek at 0x7f4a1d6d3370>
+    └ <codecs.StreamReaderWriter object at 0x7f4a00f017e0>
+  File "/usr/lib/python3.10/codecs.py", line 733, in seek
+    self.stream.seek(offset, whence)
+    │    │      │    │       └ 0
+    │    │      │    └ 0
+    │    │      └ <method 'seek' of '_io.BufferedReader' objects>
+    │    └ <_io.BufferedReader name='/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'>
+    └ <codecs.StreamReaderWriter object at 0x7f4a00f017e0>
+
+ValueError: seek of closed file
+2023-05-22T12:06:41.772138+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (20067), thread 'MainThread' (140142873913152):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 64, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f7577bf6ef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f757166f830>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f7574339ea0>>
+           └ <tkinter.CallWrapper object at 0x7f75716c5780>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 15, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ <codecs.StreamReaderWriter object at 0x7f75716c5690>
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f7574337880>
+    └ <main.ExcelDatabase object at 0x7f75716c5750>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ <codecs.StreamReaderWriter object at 0x7f75716c5690>
+         │  └ <function read_excel at 0x7f75750a1120>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ <codecs.StreamReaderWriter object at 0x7f75716c5690>
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x7f75750ee950>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1376, in inspect_excel_format
+    buf = stream.read(PEEK_SIZE)
+          │      │    └ 8
+          │      └ <function StreamReaderWriter.read at 0x7f758de9eef0>
+          └ <codecs.StreamReaderWriter object at 0x7f75716c5690>
+  File "/usr/lib/python3.10/codecs.py", line 701, in read
+    return self.reader.read(size)
+           │    │      │    └ 8
+           │    │      └ <function StreamReader.read at 0x7f758de9e8c0>
+           │    └ <encodings.utf_32.StreamReader object at 0x7f75716c55d0>
+           └ <codecs.StreamReaderWriter object at 0x7f75716c5690>
+  File "/usr/lib/python3.10/codecs.py", line 504, in read
+    newchars, decodedbytes = self.decode(data, self.errors)
+                             │    │      │     │    └ 'strict'
+                             │    │      │     └ <encodings.utf_32.StreamReader object at 0x7f75716c55d0>
+                             │    │      └ b'PK\x03\x04\x14\x00\x00\x00'
+                             │    └ <function StreamReader.decode at 0x7f75717160e0>
+                             └ <encodings.utf_32.StreamReader object at 0x7f75716c55d0>
+  File "/usr/lib/python3.10/encodings/utf_32.py", line 130, in decode
+    codecs.utf_32_ex_decode(input, errors, 0, False)
+    │      │                │      └ 'strict'
+    │      │                └ b'PK\x03\x04\x14\x00\x00\x00'
+    │      └ <built-in function utf_32_ex_decode>
+    └ <module 'codecs' from '/usr/lib/python3.10/codecs.py'>
+
+UnicodeDecodeError: 'utf-32-le' codec can't decode bytes in position 0-3: code point not in range(0x110000)
+2023-05-22T12:08:48.441182+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (20248), thread 'MainThread' (139821590103872):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f2aa9bfeef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f2aa36fccb0>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f2aa36eb730>>
+           └ <tkinter.CallWrapper object at 0x7f2aa36ab250>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 17, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ <codecs.StreamReaderWriter object at 0x7f2aa36ab1c0>
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f2aa6317880>
+    └ <main.ExcelDatabase object at 0x7f2aa36ab280>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ <codecs.StreamReaderWriter object at 0x7f2aa36ab1c0>
+         │  └ <function read_excel at 0x7f2aa7095120>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ <codecs.StreamReaderWriter object at 0x7f2aa36ab1c0>
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x7f2aa70e2950>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1376, in inspect_excel_format
+    buf = stream.read(PEEK_SIZE)
+          │      │    └ 8
+          │      └ <function StreamReaderWriter.read at 0x7f2abfe86ef0>
+          └ <codecs.StreamReaderWriter object at 0x7f2aa36ab1c0>
+  File "/usr/lib/python3.10/codecs.py", line 701, in read
+    return self.reader.read(size)
+           │    │      │    └ 8
+           │    │      └ <function StreamReader.read at 0x7f2abfe868c0>
+           │    └ <encodings.utf_32.StreamReader object at 0x7f2aa36ab160>
+           └ <codecs.StreamReaderWriter object at 0x7f2aa36ab1c0>
+  File "/usr/lib/python3.10/codecs.py", line 504, in read
+    newchars, decodedbytes = self.decode(data, self.errors)
+                             │    │      │     │    └ 'strict'
+                             │    │      │     └ <encodings.utf_32.StreamReader object at 0x7f2aa36ab160>
+                             │    │      └ b'PK\x03\x04\x14\x00\x00\x00'
+                             │    └ <function StreamReader.decode at 0x7f2aa35f1ab0>
+                             └ <encodings.utf_32.StreamReader object at 0x7f2aa36ab160>
+  File "/usr/lib/python3.10/encodings/utf_32.py", line 130, in decode
+    codecs.utf_32_ex_decode(input, errors, 0, False)
+    │      │                │      └ 'strict'
+    │      │                └ b'PK\x03\x04\x14\x00\x00\x00'
+    │      └ <built-in function utf_32_ex_decode>
+    └ <module 'codecs' from '/usr/lib/python3.10/codecs.py'>
+
+UnicodeDecodeError: 'utf-32-le' codec can't decode bytes in position 0-3: code point not in range(0x110000)
+2023-05-22T12:09:11.600131+0800 ERROR An error has been caught in function 'load_excel_data', process 'MainProcess' (20275), thread 'MainThread' (139972128655168):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f4db6b62ef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f4db03d4c30>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f4db03c3ac0>>
+           └ <tkinter.CallWrapper object at 0x7f4db037f130>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 17, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f4db2fe3880>
+    └ <main.ExcelDatabase object at 0x7f4db0362ef0>
+
+> File "/home/nate/PycharmProjects/kakasha_project/main.py", line 67, in load_excel_data
+    self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+    │    │                       │                        │                          └ 'Пшеница_яровая'
+    │    │                       │                        └ 'Год'
+    │    │                       └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский'
+    │    └ <function ExcelDatabase.create_table at 0x7f4db2fe3520>
+    └ <main.ExcelDatabase object at 0x7f4db0362ef0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 50, in create_table
+    self.cursor.execute(query)
+    │    │      │       └ 'CREATE TABLE IF NOT EXISTS /home/nate/PycharmProjects/kakasha_project/Ноябрьский (Год REAL, Пшеница_яровая REAL)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f4db03d4cc0>
+    └ <main.ExcelDatabase object at 0x7f4db0362ef0>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T12:09:11.608177+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (20275), thread 'MainThread' (139972128655168):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f4db6b62ef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f4db03d4c30>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f4db03c3ac0>>
+           └ <tkinter.CallWrapper object at 0x7f4db037f130>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 17, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f4db2fe3880>
+    └ <main.ExcelDatabase object at 0x7f4db0362ef0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 80, in load_excel_data
+    self.cursor.execute(query, insert_data)
+    │    │      │       │      └ [1997, 2000.0]
+    │    │      │       └ 'INSERT INTO /home/nate/PycharmProjects/kakasha_project/Ноябрьский VALUES (?, ?)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f4db03d4cc0>
+    └ <main.ExcelDatabase object at 0x7f4db0362ef0>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T12:09:28.751989+0800 ERROR An error has been caught in function 'load_excel_data', process 'MainProcess' (20301), thread 'MainThread' (140247905044288):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f8dec016ef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f8de5cb4cb0>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f8de5c9ffa0>>
+           └ <tkinter.CallWrapper object at 0x7f8de5c5b160>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 17, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f8de88c7880>
+    └ <main.ExcelDatabase object at 0x7f8de5c5b190>
+
+> File "/home/nate/PycharmProjects/kakasha_project/main.py", line 67, in load_excel_data
+    self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+    │    │                       │                        │                          └ 'Пшеница_яровая'
+    │    │                       │                        └ 'Год'
+    │    │                       └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский'
+    │    └ <function ExcelDatabase.create_table at 0x7f8de88c7520>
+    └ <main.ExcelDatabase object at 0x7f8de5c5b190>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 50, in create_table
+    self.cursor.execute(query)
+    │    │      │       └ 'CREATE TABLE IF NOT EXISTS /home/nate/PycharmProjects/kakasha_project/Ноябрьский (Год REAL, Пшеница_яровая REAL)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f8de5cb4b40>
+    └ <main.ExcelDatabase object at 0x7f8de5c5b190>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T12:09:28.763418+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (20301), thread 'MainThread' (140247905044288):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f8dec016ef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f8de5cb4cb0>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f8de5c9ffa0>>
+           └ <tkinter.CallWrapper object at 0x7f8de5c5b160>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 17, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f8de88c7880>
+    └ <main.ExcelDatabase object at 0x7f8de5c5b190>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 80, in load_excel_data
+    self.cursor.execute(query, insert_data)
+    │    │      │       │      └ [1997, 2000.0]
+    │    │      │       └ 'INSERT INTO /home/nate/PycharmProjects/kakasha_project/Ноябрьский VALUES (?, ?)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f8de5cb4b40>
+    └ <main.ExcelDatabase object at 0x7f8de5c5b190>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T12:09:56.636371+0800 ERROR An error has been caught in function 'load_excel_data', process 'MainProcess' (20301), thread 'MainThread' (140247905044288):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f8dec016ef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f8de5cb4cb0>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f8de5c9ffa0>>
+           └ <tkinter.CallWrapper object at 0x7f8de5c5b160>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 17, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f8de88c7880>
+    └ <main.ExcelDatabase object at 0x7f8de5c9f040>
+
+> File "/home/nate/PycharmProjects/kakasha_project/main.py", line 67, in load_excel_data
+    self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+    │    │                       │                        │                          └ 'Пшеница_яровая'
+    │    │                       │                        └ 'Год'
+    │    │                       └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский'
+    │    └ <function ExcelDatabase.create_table at 0x7f8de88c7520>
+    └ <main.ExcelDatabase object at 0x7f8de5c9f040>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 50, in create_table
+    self.cursor.execute(query)
+    │    │      │       └ 'CREATE TABLE IF NOT EXISTS /home/nate/PycharmProjects/kakasha_project/Ноябрьский (Год REAL, Пшеница_яровая REAL)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f8de5cb4b40>
+    └ <main.ExcelDatabase object at 0x7f8de5c9f040>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T12:09:56.640838+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (20301), thread 'MainThread' (140247905044288):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f8dec016ef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f8de5cb4cb0>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f8de5c9ffa0>>
+           └ <tkinter.CallWrapper object at 0x7f8de5c5b160>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 17, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f8de88c7880>
+    └ <main.ExcelDatabase object at 0x7f8de5c9f040>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 80, in load_excel_data
+    self.cursor.execute(query, insert_data)
+    │    │      │       │      └ [1997, 2000.0]
+    │    │      │       └ 'INSERT INTO /home/nate/PycharmProjects/kakasha_project/Ноябрьский VALUES (?, ?)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f8de5cb4b40>
+    └ <main.ExcelDatabase object at 0x7f8de5c9f040>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T12:10:04.352459+0800 ERROR An error has been caught in function 'load_excel_data', process 'MainProcess' (20339), thread 'MainThread' (139863859095360):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f34807eaef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f347ade8cb0>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f347ad8c6d0>>
+           └ <tkinter.CallWrapper object at 0x7f347ad8f1c0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 17, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f347d9f7880>
+    └ <main.ExcelDatabase object at 0x7f347ad8f1f0>
+
+> File "/home/nate/PycharmProjects/kakasha_project/main.py", line 67, in load_excel_data
+    self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+    │    │                       │                        │                          └ 'Пшеница_яровая'
+    │    │                       │                        └ 'Год'
+    │    │                       └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский'
+    │    └ <function ExcelDatabase.create_table at 0x7f347d9f7520>
+    └ <main.ExcelDatabase object at 0x7f347ad8f1f0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 50, in create_table
+    self.cursor.execute(query)
+    │    │      │       └ 'CREATE TABLE IF NOT EXISTS /home/nate/PycharmProjects/kakasha_project/Ноябрьский (Год REAL, Пшеница_яровая REAL)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f347ade8b40>
+    └ <main.ExcelDatabase object at 0x7f347ad8f1f0>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T12:10:04.362424+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (20339), thread 'MainThread' (139863859095360):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f34807eaef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f347ade8cb0>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f347ad8c6d0>>
+           └ <tkinter.CallWrapper object at 0x7f347ad8f1c0>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 17, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f347d9f7880>
+    └ <main.ExcelDatabase object at 0x7f347ad8f1f0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 80, in load_excel_data
+    self.cursor.execute(query, insert_data)
+    │    │      │       │      └ [1997, 2000.0]
+    │    │      │       └ 'INSERT INTO /home/nate/PycharmProjects/kakasha_project/Ноябрьский VALUES (?, ?)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f347ade8b40>
+    └ <main.ExcelDatabase object at 0x7f347ad8f1f0>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T12:10:32.189804+0800 ERROR An error has been caught in function 'load_excel_data', process 'MainProcess' (20367), thread 'MainThread' (140341815256896):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 65, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7fa3c8e62e60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7fa3c3468c30>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7fa3c34081f0>>
+           └ <tkinter.CallWrapper object at 0x7fa3c340b070>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 18, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7fa3c607f7f0>
+    └ <main.ExcelDatabase object at 0x7fa3c340b0a0>
+
+> File "/home/nate/PycharmProjects/kakasha_project/main.py", line 67, in load_excel_data
+    self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+    │    │                       │                        │                          └ 'Пшеница_яровая'
+    │    │                       │                        └ 'Год'
+    │    │                       └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский'
+    │    └ <function ExcelDatabase.create_table at 0x7fa3c607f490>
+    └ <main.ExcelDatabase object at 0x7fa3c340b0a0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 50, in create_table
+    self.cursor.execute(query)
+    │    │      │       └ 'CREATE TABLE IF NOT EXISTS /home/nate/PycharmProjects/kakasha_project/Ноябрьский (Год REAL, Пшеница_яровая REAL)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7fa3c3468ac0>
+    └ <main.ExcelDatabase object at 0x7fa3c340b0a0>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T12:10:32.199428+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (20367), thread 'MainThread' (140341815256896):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 65, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7fa3c8e62e60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7fa3c3468c30>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7fa3c34081f0>>
+           └ <tkinter.CallWrapper object at 0x7fa3c340b070>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 18, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7fa3c607f7f0>
+    └ <main.ExcelDatabase object at 0x7fa3c340b0a0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 80, in load_excel_data
+    self.cursor.execute(query, insert_data)
+    │    │      │       │      └ [1997, 2000.0]
+    │    │      │       └ 'INSERT INTO /home/nate/PycharmProjects/kakasha_project/Ноябрьский VALUES (?, ?)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7fa3c3468ac0>
+    └ <main.ExcelDatabase object at 0x7fa3c340b0a0>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T12:11:01.712520+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (20428), thread 'MainThread' (140069777651520):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 65, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f6472dfae60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f646c920c30>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f646c910be0>>
+           └ <tkinter.CallWrapper object at 0x7f646c8c70a0>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 18, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f646f5337f0>
+    └ <main.ExcelDatabase object at 0x7f646c8c70d0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+         │  └ <function read_excel at 0x7f647029d090>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x7f64702ea8c0>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1371, in inspect_excel_format
+    with get_handle(
+         └ <function get_handle at 0x7f647072a440>
+  File "/usr/lib/python3.10/site-packages/pandas/io/common.py", line 868, in get_handle
+    handle = open(handle, ioargs.mode)
+                  │       │      └ 'rb'
+                  │       └ IOArgs(filepath_or_buffer='\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx', encoding='utf-8', mode='rb', com...
+                  └ '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+
+FileNotFoundError: [Errno 2] No such file or directory: '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+2023-05-22T12:12:08.514876+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (20554), thread 'MainThread' (140576524408640):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 65, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7fda6f316e60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7fda69088c30>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7fda69078160>>
+           └ <tkinter.CallWrapper object at 0x7fda6900ee90>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 18, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7fda6bc977f0>
+    └ <main.ExcelDatabase object at 0x7fda6900ee60>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+         │  └ <function read_excel at 0x7fda6c9fd090>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x7fda6ca4e8c0>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1371, in inspect_excel_format
+    with get_handle(
+         └ <function get_handle at 0x7fda6ce8e440>
+  File "/usr/lib/python3.10/site-packages/pandas/io/common.py", line 868, in get_handle
+    handle = open(handle, ioargs.mode)
+                  │       │      └ 'rb'
+                  │       └ IOArgs(filepath_or_buffer='\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx', encoding='utf-8', mode='rb', com...
+                  └ '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+
+FileNotFoundError: [Errno 2] No such file or directory: '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+2023-05-22T12:12:41.020778+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (20626), thread 'MainThread' (140034809440064):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 65, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f5c4ded6e60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f5c484e4c30>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f5c484d47f0>>
+           └ <tkinter.CallWrapper object at 0x7f5c4848b160>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 18, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f5c4b0fb7f0>
+    └ <main.ExcelDatabase object at 0x7f5c4848b190>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 63, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+         │  └ <function read_excel at 0x7f5c4be61090>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x7f5c4beb28c0>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1371, in inspect_excel_format
+    with get_handle(
+         └ <function get_handle at 0x7f5c4c2f2440>
+  File "/usr/lib/python3.10/site-packages/pandas/io/common.py", line 868, in get_handle
+    handle = open(handle, ioargs.mode)
+                  │       │      └ 'rb'
+                  │       └ IOArgs(filepath_or_buffer='\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx', encoding='utf-8', mode='rb', com...
+                  └ '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+
+FileNotFoundError: [Errno 2] No such file or directory: '\\home\\nate\\PycharmProjects\\kakasha_project\\Ноябрьский.xlsx'
+2023-05-22T12:14:39.819157+0800 ERROR An error has been caught in function 'load_excel_data', process 'MainProcess' (20913), thread 'MainThread' (139685420214080):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 64, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f0af55fee60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f0aef144c30>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f0aef130bb0>>
+           └ <tkinter.CallWrapper object at 0x7f0aef0e7070>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 17, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f0af1d577f0>
+    └ <main.ExcelDatabase object at 0x7f0aef0e70a0>
+
+> File "/home/nate/PycharmProjects/kakasha_project/main.py", line 67, in load_excel_data
+    self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+    │    │                       │                        │                          └ 'Пшеница_яровая'
+    │    │                       │                        └ 'Год'
+    │    │                       └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский'
+    │    └ <function ExcelDatabase.create_table at 0x7f0af1d57490>
+    └ <main.ExcelDatabase object at 0x7f0aef0e70a0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 50, in create_table
+    self.cursor.execute(query)
+    │    │      │       └ 'CREATE TABLE IF NOT EXISTS /home/nate/PycharmProjects/kakasha_project/Ноябрьский (Год REAL, Пшеница_яровая REAL)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f0aef144ac0>
+    └ <main.ExcelDatabase object at 0x7f0aef0e70a0>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T12:14:39.832045+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (20913), thread 'MainThread' (139685420214080):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 64, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f0af55fee60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f0aef144c30>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f0aef130bb0>>
+           └ <tkinter.CallWrapper object at 0x7f0aef0e7070>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 17, in import_excel
+    db.load_excel_data(file_path=file_name)
+    │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f0af1d577f0>
+    └ <main.ExcelDatabase object at 0x7f0aef0e70a0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 80, in load_excel_data
+    self.cursor.execute(query, insert_data)
+    │    │      │       │      └ [1997, 2000.0]
+    │    │      │       └ 'INSERT INTO /home/nate/PycharmProjects/kakasha_project/Ноябрьский VALUES (?, ?)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f0aef144ac0>
+    └ <main.ExcelDatabase object at 0x7f0aef0e70a0>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T22:17:20.360931+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (64959), thread 'MainThread' (140349080028992):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7fa57a81aef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7fa5744c4cb0>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7fa5744abaf0>>
+           └ <tkinter.CallWrapper object at 0x7fa57445f3d0>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 16, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ <built-in method split of str object at 0x7fa590d256f0>
+                 │  └ <function ExcelDatabase.load_excel_data at 0x7fa5770c7880>
+                 └ <main.ExcelDatabase object at 0x7fa57445f340>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ <built-in method split of str object at 0x7fa590d256f0>
+         │  └ <function read_excel at 0x7fa577e2d120>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ <built-in method split of str object at 0x7fa590d256f0>
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x7fa577e7e950>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1371, in inspect_excel_format
+    with get_handle(
+         └ <function get_handle at 0x7fa5782ba4d0>
+  File "/usr/lib/python3.10/site-packages/pandas/io/common.py", line 716, in get_handle
+    ioargs = _get_filepath_or_buffer(
+             └ <function _get_filepath_or_buffer at 0x7fa5782ba200>
+  File "/usr/lib/python3.10/site-packages/pandas/io/common.py", line 456, in _get_filepath_or_buffer
+    raise ValueError(msg)
+                     └ "Invalid file path or buffer object type: <class 'builtin_function_or_method'>"
+
+ValueError: Invalid file path or buffer object type: <class 'builtin_function_or_method'>
+2023-05-22T22:17:39.210835+0800 ERROR An error has been caught in function 'load_excel_data', process 'MainProcess' (64995), thread 'MainThread' (140129290053440):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f724d68eef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f7247cbccb0>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f7247c9ff70>>
+           └ <tkinter.CallWrapper object at 0x7f7247c4f3a0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 16, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x7f724a8b7880>
+                 └ <main.ExcelDatabase object at 0x7f7247c4f310>
+
+> File "/home/nate/PycharmProjects/kakasha_project/main.py", line 67, in load_excel_data
+    self.create_table(table_name=table_name, column1_name=column1_name, column2_name=column2_name)
+    │    │                       │                        │                          └ 'Пшеница_яровая'
+    │    │                       │                        └ 'Год'
+    │    │                       └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский'
+    │    └ <function ExcelDatabase.create_table at 0x7f724a8b7520>
+    └ <main.ExcelDatabase object at 0x7f7247c4f310>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 50, in create_table
+    self.cursor.execute(query)
+    │    │      │       └ 'CREATE TABLE IF NOT EXISTS /home/nate/PycharmProjects/kakasha_project/Ноябрьский (Год REAL, Пшеница_яровая REAL)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f7247cbcb40>
+    └ <main.ExcelDatabase object at 0x7f7247c4f310>
+
+sqlite3.OperationalError: near "/": syntax error
+2023-05-22T22:17:39.220411+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (64995), thread 'MainThread' (140129290053440):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 68, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f724d68eef0>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f7247cbccb0>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f7247c9ff70>>
+           └ <tkinter.CallWrapper object at 0x7f7247c4f3a0>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 16, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ '/home/nate/PycharmProjects/kakasha_project/Ноябрьский.xlsx'
+                 │  └ <function ExcelDatabase.load_excel_data at 0x7f724a8b7880>
+                 └ <main.ExcelDatabase object at 0x7f7247c4f310>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 80, in load_excel_data
+    self.cursor.execute(query, insert_data)
+    │    │      │       │      └ [1997, 2000.0]
+    │    │      │       └ 'INSERT INTO /home/nate/PycharmProjects/kakasha_project/Ноябрьский VALUES (?, ?)'
+    │    │      └ <method 'execute' of 'sqlite3.Cursor' objects>
+    │    └ <sqlite3.Cursor object at 0x7f7247cbcb40>
+    └ <main.ExcelDatabase object at 0x7f7247c4f310>
+
+sqlite3.OperationalError: near "/": syntax error
 2023-05-22T22:24:57.700003+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (6550), thread 'MainThread' (4485152256):
 Traceback (most recent call last):
 
@@ -768,3 +2021,255 @@ Traceback (most recent call last):
              └ {}
 
 IndexError: list index out of range
+2023-05-24T15:08:16.044220+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (90297), thread 'MainThread' (140263288678208):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 83, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f9180402e60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f917d5e2830>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f917d529db0>>
+           └ <tkinter.CallWrapper object at 0x7f917d52ae30>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 30, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ ()
+                 │  └ <function ExcelDatabase.load_excel_data at 0x7f917d613880>
+                 └ <main.ExcelDatabase object at 0x7f917d639060>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ ()
+         │  └ <function read_excel at 0x7f917e365120>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ ()
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x7f917e3ba950>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1371, in inspect_excel_format
+    with get_handle(
+         └ <function get_handle at 0x7f917e80a4d0>
+  File "/usr/lib/python3.10/site-packages/pandas/io/common.py", line 716, in get_handle
+    ioargs = _get_filepath_or_buffer(
+             └ <function _get_filepath_or_buffer at 0x7f917e80a200>
+  File "/usr/lib/python3.10/site-packages/pandas/io/common.py", line 456, in _get_filepath_or_buffer
+    raise ValueError(msg)
+                     └ "Invalid file path or buffer object type: <class 'tuple'>"
+
+ValueError: Invalid file path or buffer object type: <class 'tuple'>
+2023-05-24T15:08:16.044220+0800 ERROR An error has been caught in function 'import_excel', process 'MainProcess' (90297), thread 'MainThread' (140263288678208):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 83, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f9180402e60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f917d5e2830>
+    └ <tkinter.Tk object .>
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f917d529db0>>
+           └ <tkinter.CallWrapper object at 0x7f917d52ae30>
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 30, in import_excel
+    table_name = db.load_excel_data(file_path=file_name)
+                 │  │                         └ ()
+                 │  └ <function ExcelDatabase.load_excel_data at 0x7f917d613880>
+                 └ <main.ExcelDatabase object at 0x7f917d639060>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 62, in load_excel_data
+    df = pd.read_excel(file_path)
+         │  │          └ ()
+         │  └ <function read_excel at 0x7f917e365120>
+         └ <module 'pandas' from '/usr/lib/python3.10/site-packages/pandas/__init__.py'>
+
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 478, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+         │         │                   │                       └ None
+         │         │                   └ None
+         │         └ ()
+         └ <class 'pandas.io.excel._base.ExcelFile'>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1496, in __init__
+    ext = inspect_excel_format(
+          └ <function inspect_excel_format at 0x7f917e3ba950>
+  File "/usr/lib/python3.10/site-packages/pandas/io/excel/_base.py", line 1371, in inspect_excel_format
+    with get_handle(
+         └ <function get_handle at 0x7f917e80a4d0>
+  File "/usr/lib/python3.10/site-packages/pandas/io/common.py", line 716, in get_handle
+    ioargs = _get_filepath_or_buffer(
+             └ <function _get_filepath_or_buffer at 0x7f917e80a200>
+  File "/usr/lib/python3.10/site-packages/pandas/io/common.py", line 456, in _get_filepath_or_buffer
+    raise ValueError(msg)
+                     └ "Invalid file path or buffer object type: <class 'tuple'>"
+
+ValueError: Invalid file path or buffer object type: <class 'tuple'>
+2023-05-24T15:08:16.066797+0800 ERROR An error has been caught in function '__call__', process 'MainProcess' (90297), thread 'MainThread' (140263288678208):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 83, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f9180402e60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f917d5e2830>
+    └ <tkinter.Tk object .>
+> File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f917d529db0>>
+           └ <tkinter.CallWrapper object at 0x7f917d52ae30>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 33, in import_excel
+    rows = [[dct[keys[0]][i], dct[keys[1]][j]] for i in range(len(dct[keys[0]])) for j in range(len(dct[keys[1]]))
+             │   │            │   │                               │   │                             │   └ []
+             │   │            │   │                               │   │                             └ {}
+             │   │            │   │                               │   └ []
+             │   │            │   │                               └ {}
+             │   │            │   └ []
+             │   │            └ {}
+             │   └ []
+             └ {}
+
+IndexError: list index out of range
+2023-05-24T15:08:16.066797+0800 ERROR An error has been caught in function '__call__', process 'MainProcess' (90297), thread 'MainThread' (140263288678208):
+Traceback (most recent call last):
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 83, in <module>
+    window.mainloop()
+    │      └ <function Misc.mainloop at 0x7f9180402e60>
+    └ <tkinter.Tk object .>
+
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1458, in mainloop
+    self.tk.mainloop(n)
+    │    │  │        └ 0
+    │    │  └ <method 'mainloop' of '_tkinter.tkapp' objects>
+    │    └ <_tkinter.tkapp object at 0x7f917d5e2830>
+    └ <tkinter.Tk object .>
+> File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+           │    │     └ ()
+           │    └ <bound method App.import_excel of <__main__.App object at 0x7f917d529db0>>
+           └ <tkinter.CallWrapper object at 0x7f917d52ae30>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 33, in import_excel
+    rows = [[dct[keys[0]][i], dct[keys[1]][j]] for i in range(len(dct[keys[0]])) for j in range(len(dct[keys[1]]))
+             │   │            │   │                               │   │                             │   └ []
+             │   │            │   │                               │   │                             └ {}
+             │   │            │   │                               │   └ []
+             │   │            │   │                               └ {}
+             │   │            │   └ []
+             │   │            └ {}
+             │   └ []
+             └ {}
+
+IndexError: list index out of range
+2023-05-24T17:10:55.544410+0800 ERROR An error has been caught in function '<module>', process 'MainProcess' (95955), thread 'MainThread' (140071048755008):
+Traceback (most recent call last):
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 81, in <module>
+    app.grid_placement()
+    │   └ <function App.grid_placement at 0x7f64baef2cb0>
+    └ <__main__.App object at 0x7f64baee9de0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 42, in grid_placement
+    self.entryGrid.grid(row="2", column="6")
+    │    └ None
+    └ <__main__.App object at 0x7f64baee9de0>
+
+AttributeError: 'NoneType' object has no attribute 'grid'
+2023-05-24T17:10:55.544410+0800 ERROR An error has been caught in function '<module>', process 'MainProcess' (95955), thread 'MainThread' (140071048755008):
+Traceback (most recent call last):
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 81, in <module>
+    app.grid_placement()
+    │   └ <function App.grid_placement at 0x7f64baef2cb0>
+    └ <__main__.App object at 0x7f64baee9de0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 42, in grid_placement
+    self.entryGrid.grid(row="2", column="6")
+    │    └ None
+    └ <__main__.App object at 0x7f64baee9de0>
+
+AttributeError: 'NoneType' object has no attribute 'grid'
+2023-05-24T17:11:45.750149+0800 ERROR An error has been caught in function '<module>', process 'MainProcess' (96036), thread 'MainThread' (140392160819008):
+Traceback (most recent call last):
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 81, in <module>
+    app.grid_placement()
+    │   └ <function App.grid_placement at 0x7faf7eb42cb0>
+    └ <__main__.App object at 0x7faf7eb35de0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 42, in grid_placement
+    self.entryGrid.grid(row="1", column="0")
+    │    └ None
+    └ <__main__.App object at 0x7faf7eb35de0>
+
+AttributeError: 'NoneType' object has no attribute 'grid'
+2023-05-24T17:11:45.750149+0800 ERROR An error has been caught in function '<module>', process 'MainProcess' (96036), thread 'MainThread' (140392160819008):
+Traceback (most recent call last):
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 81, in <module>
+    app.grid_placement()
+    │   └ <function App.grid_placement at 0x7faf7eb42cb0>
+    └ <__main__.App object at 0x7faf7eb35de0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 42, in grid_placement
+    self.entryGrid.grid(row="1", column="0")
+    │    └ None
+    └ <__main__.App object at 0x7faf7eb35de0>
+
+AttributeError: 'NoneType' object has no attribute 'grid'
+2023-05-24T17:12:04.225738+0800 ERROR An error has been caught in function '<module>', process 'MainProcess' (96076), thread 'MainThread' (140306499057472):
+Traceback (most recent call last):
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 81, in <module>
+    app.grid_placement()
+    │   └ <function App.grid_placement at 0x7f9b8cdd6cb0>
+    └ <__main__.App object at 0x7f9b8cdc9de0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 42, in grid_placement
+    self.entryGrid.grid(row="1", column="0")
+    │    └ None
+    └ <__main__.App object at 0x7f9b8cdc9de0>
+
+AttributeError: 'NoneType' object has no attribute 'grid'
+2023-05-24T17:12:04.225738+0800 ERROR An error has been caught in function '<module>', process 'MainProcess' (96076), thread 'MainThread' (140306499057472):
+Traceback (most recent call last):
+
+> File "/home/nate/PycharmProjects/kakasha_project/app.py", line 81, in <module>
+    app.grid_placement()
+    │   └ <function App.grid_placement at 0x7f9b8cdd6cb0>
+    └ <__main__.App object at 0x7f9b8cdc9de0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/app.py", line 42, in grid_placement
+    self.entryGrid.grid(row="1", column="0")
+    │    └ None
+    └ <__main__.App object at 0x7f9b8cdc9de0>
+
+AttributeError: 'NoneType' object has no attribute 'grid'
