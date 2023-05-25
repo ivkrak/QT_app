@@ -47,7 +47,7 @@ class ExcelDatabase:
         Параметры:
         - table_name (строка): имя таблицы
         """
-        query = f"CREATE TABLE IF NOT EXISTS {table_name} ({column1_name} REAL, {column2_name} REAL)"
+        query = f"CREATE TABLE IF NOT EXISTS {table_name} ({column1_name} INT, {column2_name} REAL)"
         self.cursor.execute(query)
         self.conn.commit()
 
@@ -70,6 +70,11 @@ class ExcelDatabase:
         # endregion
         print(f'{table_name=}')
         print(f'{file_path=}')
+        if table_name in self.get_table_names():
+            logger.info('Таблица повторилась')
+            logger.info(f'{table_name=}')
+            logger.info(f'{self.get_table_names()=}')
+            return table_name
         # table_name = file_path.split('.')[0]
         column1_name = columns_names[0].replace(' ', '_')
         column2_name = columns_names[1].replace(' ', '_')
@@ -106,7 +111,9 @@ class ExcelDatabase:
         table_names = [table[0] for table in tables]
         return table_names
 
+    @logger.catch
     def create_dct_from_table(self, path, table_name):
+        logger.info(f'CREATE_DCT_FROM_TABLE {table_name=}')
         # Установка соединения с базой данных
         conn = sqlite3.connect(path)
         cursor = conn.cursor()
@@ -142,7 +149,9 @@ class ExcelDatabase:
 
 
 class picture:
+
     @staticmethod
+    @logger.catch
     def create_picture(x, y, label, x_info, y_info):
         """
         :param x: список со значениями по оси x
@@ -172,6 +181,7 @@ class picture:
         return f"Images/picture{count + 1}.png"
 
     @staticmethod
+    @logger.catch
     def get_file_list(folder_path):
         # Получаем список файлов и папок в указанной директории
         items = os.listdir(folder_path)
@@ -182,6 +192,7 @@ class picture:
         return files
 
     @staticmethod
+    @logger.catch
     def get_last_picture():
         pic_arr = picture.get_file_list('Images')
         pic_arr = sorted(list(map((lambda x: x.split('.png')[0]), pic_arr)))

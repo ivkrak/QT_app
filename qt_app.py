@@ -24,7 +24,7 @@ class MainWindow(QMainWindow):
         self.label = QLabel(self)
 
         # loading image
-        self.pixmap = QPixmap(picture.create_picture([1,1,1], [1997,1998,1999], "График", "Годы", "Урожай"))
+        self.pixmap = QPixmap(picture.create_picture([1,1,1], [1997,1998,1999], "График", "Урожай", "Годы"))
 
         # adding image to label
         self.label.setPixmap(self.pixmap)
@@ -78,7 +78,7 @@ class MainWindow(QMainWindow):
             self.table_widget.setItem(rowPosition, 0, QTableWidgetItem(str(i[0])))
             self.table_widget.setItem(rowPosition, 1, QTableWidgetItem(str(i[1])))
 
-        self.pixmap = QPixmap(picture.create_picture(self.yses, self.xses, "График", "Годы", "Урожай"))
+        self.pixmap = QPixmap(picture.create_picture(self.yses, self.xses, "График", "Урожай", "Годы"))
         self.label.setPixmap(self.pixmap)
 
     def export_data(self):
