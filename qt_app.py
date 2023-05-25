@@ -1,6 +1,8 @@
 import sys
 import csv
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QPushButton, QVBoxLayout, QWidget, QFileDialog
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QPixmap
+from main import picture, ExcelDatabase
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -9,23 +11,43 @@ class MainWindow(QMainWindow):
         # Create QTableWidget
         self.table_widget = QTableWidget()
         self.table_widget.setColumnCount(2)
+        self.table_widget.setHorizontalHeaderLabels(["Годы", "Урожай"])
 
         # Create buttons
-        self.import_button = QPushButton("Import Data")
-        self.export_button = QPushButton("Export Data")
+        self.import_button = QPushButton("Импорт")
+        self.export_button = QPushButton("Экспорт")
 
         # Connect buttons to their functions
         self.import_button.clicked.connect(self.import_data)
         self.export_button.clicked.connect(self.export_data)
 
+        self.label = QLabel(self)
+
+        # loading image
+        self.pixmap = QPixmap(picture.create_picture([1,1,1], [1997,1998,1999], "График", "Годы", "Урожай"))
+
+        # adding image to label
+        self.label.setPixmap(self.pixmap)
+
+        # Optional, resize label to image size
+        self.label.resize(200, 200)
+
+        self.xses = []
+        self.yses = []
+
         # Add table and buttons to layout
-        layout = QVBoxLayout()
-        layout.addWidget(self.table_widget)
-        layout.addWidget(self.import_button)
-        layout.addWidget(self.export_button)
+        layoutH = QHBoxLayout()
+        layoutH.addWidget(self.table_widget)
+        layoutH.stretch(1)
+        layoutH.addWidget(self.label)
+        layoutV = QVBoxLayout()
+
+        layoutV.addWidget(self.import_button)
+        layoutV.addWidget(self.export_button)
+        layoutV.addLayout(layoutH)
 
         central_widget = QWidget()
-        central_widget.setLayout(layout)
+        central_widget.setLayout(layoutV)
 
         self.setCentralWidget(central_widget)
 
@@ -36,13 +58,28 @@ class MainWindow(QMainWindow):
                                                   "Data tables(*.xlsx)", options=options)
         if fileName:
             print(fileName)
-        with open("data.csv", "r") as file:
-            csv_reader = csv.reader(file)
-            for row in csv_reader:
-                row_count = self.table_widget.rowCount()
-                self.table_widget.insertRow(row_count)
-                for col, data in enumerate(row):
-                    self.table_widget.setItem(row_count, col, QTableWidgetItem(data))
+
+        db = ExcelDatabase('DB.db')
+        table_name = db.load_excel_data(file_path=fileName)
+        dct = db.create_dct_from_table('DB.db', table_name)
+        keys = list(dct.keys())
+        for i in range(len(dct[keys[0]])):
+            self.xses.append(dct[keys[0]][i])
+        for i in range(len(dct[keys[1]])):
+            self.yses.append(dct[keys[1]][i])
+
+        rows = [[dct[keys[0]][i], dct[keys[1]][j]] for i in range(len(dct[keys[0]])) for j in range(len(dct[keys[1]]))
+                if i == j]
+        db.close_connection()
+
+        for i in rows:
+            rowPosition = self.table_widget.rowCount()
+            self.table_widget.insertRow(rowPosition)
+            self.table_widget.setItem(rowPosition, 0, QTableWidgetItem(str(i[0])))
+            self.table_widget.setItem(rowPosition, 1, QTableWidgetItem(str(i[1])))
+
+        self.pixmap = QPixmap(picture.create_picture(self.yses, self.xses, "График", "Годы", "Урожай"))
+        self.label.setPixmap(self.pixmap)
 
     def export_data(self):
         with open("output.csv", "w", newline="") as file:

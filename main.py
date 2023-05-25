@@ -3,6 +3,7 @@ import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
 from loguru import logger
+import numpy as np
 
 logger.add(
     'errors.log',
@@ -151,10 +152,12 @@ class picture:
         :param y_info: описания данных по оси y
         :return: путь до графика
         """
-
+        x, y = np.array(x), np.array(y)
         fig, ax = plt.subplots()
-        ax.plot(y, x, '.-')
+        ax.scatter(x,y)
         ax.grid()
+        slope, intercept = np.polyfit(x, y, 1)
+        ax.plot(x, slope*x + intercept, color='blue')
         ax.set_xlabel(x_info, fontsize=15, color='red', )
         ax.set_ylabel(y_info, fontsize=15, color='red', )
         ax.set_title(label)

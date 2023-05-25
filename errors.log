@@ -2273,3 +2273,29 @@ Traceback (most recent call last):
     └ <__main__.App object at 0x7f9b8cdc9de0>
 
 AttributeError: 'NoneType' object has no attribute 'grid'
+2023-05-25T13:35:34.293672+0800 ERROR An error has been caught in function '<module>', process 'MainProcess' (23411), thread 'MainThread' (139661236434752):
+Traceback (most recent call last):
+
+> File "/home/nate/PycharmProjects/kakasha_project/main.py", line 197, in <module>
+    db.load_excel_data(file_path=file_path)
+    │  │                         └ 'Октябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7f0550f07e20>
+    └ <__main__.ExcelDatabase object at 0x7f0550f085e0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 70, in load_excel_data
+    print(f'{table_name=}')
+
+UnboundLocalError: local variable 'table_name' referenced before assignment
+2023-05-25T13:36:03.305529+0800 ERROR An error has been caught in function '<module>', process 'MainProcess' (23471), thread 'MainThread' (140522274871104):
+Traceback (most recent call last):
+
+> File "/home/nate/PycharmProjects/kakasha_project/main.py", line 197, in <module>
+    db.load_excel_data(file_path=file_path)
+    │  │                         └ 'Октябрьский.xlsx'
+    │  └ <function ExcelDatabase.load_excel_data at 0x7fcdcad6be20>
+    └ <__main__.ExcelDatabase object at 0x7fcdcad6c5e0>
+
+  File "/home/nate/PycharmProjects/kakasha_project/main.py", line 70, in load_excel_data
+    print(f'{table_name=}')
+
+UnboundLocalError: local variable 'table_name' referenced before assignment
