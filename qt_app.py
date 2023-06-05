@@ -7,24 +7,43 @@ from main import picture, ExcelDatabase
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-
+        self.setWindowTitle("VKR_Project")
         # Create QTableWidget
         self.table_widget = QTableWidget()
         self.table_widget.setColumnCount(2)
-        self.table_widget.setHorizontalHeaderLabels(["Годы", "Урожай"])
+        self.table_widget.setHorizontalHeaderLabels(["Годы", "Урожайность"])
 
+
+        self.coefficients_table_widget = QTableWidget()
+        self.coefficients_table_widget.setColumnCount(2)
+        self.coefficients_table_widget.setHorizontalHeaderLabels(["Коэффициент", "Значение"])
         # Create buttons
         self.import_button = QPushButton("Импорт")
         self.export_button = QPushButton("Экспорт")
+
+        self.linear_button = QPushButton("Линейная")
+        self.exponent_button = QPushButton("Степенная")
+        self.logistic_button = QPushButton("Логистическая")
+        self.asymptotic_button = QPushButton("Асимптотическая")
 
         # Connect buttons to their functions
         self.import_button.clicked.connect(self.import_data)
         self.export_button.clicked.connect(self.export_data)
 
+        self.linear_button.clicked.connect(self.recalculate_linear)
+        self.exponent_button.clicked.connect(self.recalculate_exponential)
+        self.logistic_button.clicked.connect(self.recalculate_logistic)
+        self.asymptotic_button.clicked.connect(self.recalculate_asymptotic)
+
+        self.parametric_table = QTableWidget()
+        self.parametric_table.setColumnCount(3)
+
         self.label = QLabel(self)
 
+        self.imported_once = False
+
         # loading image
-        self.pixmap = QPixmap(picture.create_picture([1,1,1], [1997,1998,1999], "График", "Годы", "Урожай"))
+        self.pixmap = QPixmap(picture.create_picture([1,1,1], [1997,1998,1999], "График", "Урожайность", "Годы", "exponential"))
 
         # adding image to label
         self.label.setPixmap(self.pixmap)
@@ -39,19 +58,35 @@ class MainWindow(QMainWindow):
         layoutH = QHBoxLayout()
         layoutH.addWidget(self.table_widget)
         layoutH.stretch(1)
-        layoutH.addWidget(self.label)
-        layoutV = QVBoxLayout()
+        layoutCV = QVBoxLayout()
+        layoutCV.addWidget(self.label)
+        layoutCV.addWidget(self.coefficients_table_widget)
+        layoutCV.stretch(2)
+        layoutH.addLayout(layoutCV)
+        layoutH.addWidget(self.parametric_table)
+        self.layoutV = QVBoxLayout()
 
-        layoutV.addWidget(self.import_button)
-        layoutV.addWidget(self.export_button)
-        layoutV.addLayout(layoutH)
+        self.layoutV.addWidget(self.import_button)
+        self.layoutV.addWidget(self.export_button)
+        self.layoutV.addLayout(layoutH)
 
         central_widget = QWidget()
-        central_widget.setLayout(layoutV)
+        central_widget.setLayout(self.layoutV)
+
+
 
         self.setCentralWidget(central_widget)
 
     def import_data(self):
+        if not self.imported_once:
+            layoutHB = QHBoxLayout()
+            layoutHB.addWidget(self.linear_button)
+            layoutHB.addWidget(self.exponent_button)
+            layoutHB.addWidget(self.logistic_button)
+            layoutHB.addWidget(self.asymptotic_button)
+            self.layoutV.addLayout(layoutHB)
+            self.imported_once = True
+
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         fileName, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "",
@@ -68,7 +103,7 @@ class MainWindow(QMainWindow):
         for i in range(len(dct[keys[1]])):
             self.yses.append(dct[keys[1]][i])
 
-        rows = [[dct[keys[0]][i], dct[keys[1]][j]] for i in range(len(dct[keys[0]])) for j in range(len(dct[keys[1]]))
+        rows = [[int(dct[keys[0]][i]), dct[keys[1]][j]] for i in range(len(dct[keys[0]])) for j in range(len(dct[keys[1]]))
                 if i == j]
         db.close_connection()
 
@@ -78,8 +113,10 @@ class MainWindow(QMainWindow):
             self.table_widget.setItem(rowPosition, 0, QTableWidgetItem(str(i[0])))
             self.table_widget.setItem(rowPosition, 1, QTableWidgetItem(str(i[1])))
 
-        self.pixmap = QPixmap(picture.create_picture(self.yses, self.xses, "График", "Годы", "Урожай"))
+        self.pixmap = QPixmap(picture.create_picture(self.yses, self.xses, "График", "Урожайность", "Годы", "linear"))
         self.label.setPixmap(self.pixmap)
+
+        self.update_coefficents(picture.calculate_statistic(self.yses, self.xses, "linear"))
 
     def export_data(self):
         with open("output.csv", "w", newline="") as file:
@@ -94,6 +131,27 @@ class MainWindow(QMainWindow):
                         row_data.append("")
                 csv_writer.writerow(row_data)
 
+    def recalculate_linear(self):
+        self.pixmap = QPixmap(picture.create_picture(self.yses, self.xses, "График", "Урожайность", "Годы", "linear"))
+        self.label.setPixmap(self.pixmap)
+        self.update_coefficents(picture.calculate_statistic(self.yses, self.xses, "linear"))
+    def recalculate_exponential(self):
+        self.pixmap = QPixmap(picture.create_picture(self.yses, self.xses, "График", "Урожайность", "Годы", "exponential"))
+        self.label.setPixmap(self.pixmap)
+        self.update_coefficents(picture.calculate_statistic(self.yses, self.xses, "exponential"))
+    def recalculate_logistic(self):
+        self.pixmap = QPixmap(picture.create_picture(self.yses, self.xses, "График", "Урожайность", "Годы", "logistic"))
+        self.label.setPixmap(self.pixmap)
+        self.update_coefficents(picture.calculate_statistic(self.yses, self.xses, "logistic"))
+    def recalculate_asymptotic(self):
+        print('Asymptotic')
+
+    def update_coefficents(self, dict_data):
+        for i in dict_data.keys():
+            rowPosition = self.coefficients_table_widget.rowCount()
+            self.coefficients_table_widget.insertRow(rowPosition)
+            self.coefficients_table_widget.setItem(rowPosition, 0, QTableWidgetItem(str(i)))
+            self.coefficients_table_widget.setItem(rowPosition, 1, QTableWidgetItem(str(dict_data[i])))
 
 app = QApplication(sys.argv)
 main_window = MainWindow()

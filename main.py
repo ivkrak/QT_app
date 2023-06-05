@@ -2,6 +2,7 @@ import os
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.ticker
 from loguru import logger
 import numpy as np
 
@@ -142,8 +143,9 @@ class ExcelDatabase:
 
 
 class picture:
+
     @staticmethod
-    def create_picture(x, y, label, x_info, y_info):
+    def create_picture(x, y, label, x_info, y_info, func):
         """
         :param x: список со значениями по оси x
         :param y: список со значениями по оси y
@@ -151,15 +153,48 @@ class picture:
         :param x_info: описания данных по оси x
         :param y_info: описания данных по оси y
         :return: путь до графика
+        :func: тип математической модели
         """
         x, y = np.array(x), np.array(y)
         fig, ax = plt.subplots()
         ax.scatter(x,y)
+        locator = matplotlib.ticker.MultipleLocator(1)
+        ax.yaxis.set_major_locator(locator)
         ax.grid()
-        slope, intercept = np.polyfit(x, y, 1)
-        ax.plot(x, slope*x + intercept, color='blue')
+        is_ones = True
+        for i in x:
+            if i != 1:
+                is_ones = False
+        if not is_ones:
+            if func == "exponential":
+                xx = np.array([(i/9)**2 for i in range(30,49)])
+                yy = np.array([i for i in range(1997, 2016)])
+                ax.plot(xx, yy)
+            if func == "linear":
+                slope, intercept = np.polyfit(x, y, 1)
+                ax.plot(x, slope*x + intercept, color='blue')
+            if func == "logistic":
+                xx = np.array([(np.exp(i) / (1 + np.exp(i))) for i in range(30, 49)])
+                yy = np.array([i for i in range(1997, 2016)])
+                ax.plot(xx, yy)
+            if func == "asymptotic":
+                print("placeholder for asymptotic plot")
+            """
+            x_avg = np.average(x)
+            SSE = 0
+            for i in range(len(xx)):
+                SSE += (x[i] - xx[i])**2
+            SST = 0
+            for i in range(len(x)):
+                SST += (x[i] - x_avg)**2
+                
+            ax.text(x[0], y[0], f'Коэффициент детерминации - {1 - (SSE / SST):.2f}')
+            """
+
+
         ax.set_xlabel(x_info, fontsize=15, color='red', )
         ax.set_ylabel(y_info, fontsize=15, color='red', )
+
         ax.set_title(label)
         items = os.listdir('Images')
         # Перебираем все элементы
@@ -171,6 +206,49 @@ class picture:
         plt.savefig(f"Images/picture{count + 1}.png")
         return f"Images/picture{count + 1}.png"
 
+    @staticmethod
+    def calculate_statistic(x, y, func):
+        stats = {"R2" : 0, "F": 0, "Student": 0}
+        xx, yy = 0, 0
+        print('start of calculation')
+        match func:
+            case "linear":
+                xx = np.array([i for i in range(30, 49)])
+                yy = np.array([i for i in range(1997, 2016)])
+            case "exponential":
+                xx = np.array([(i / 9) ** 2 for i in range(30, 49)])
+                yy = np.array([i for i in range(1997, 2016)])
+            case "logistic":
+                xx = np.array([(np.exp(i) / (1 + np.exp(i))) for i in range(30, 49)])
+                yy = np.array([i for i in range(1997, 2016)])
+            case "asymptotic":
+                xx = np.array([(i / 9) ** 2 for i in range(30, 49)])
+                yy = np.array([i for i in range(1997, 2016)])
+        print('xx and yy calculated')
+        x_avg = np.average(x)
+        xx_avg = np.average(xx)
+        print('averages calculated')
+        SSE = 0
+        print('calculating SSE')
+        for i in range(len(xx)):
+            SSE += (x[i] - xx[i]) ** 2
+        SST = 0
+        print('calculating SST')
+        for i in range(len(x)):
+            SST += (x[i] - x_avg) ** 2
+        print('calculating R2')
+        stats["R2"] = float(f'{1 - (SSE / SST):.2f}')
+        print(stats["R2"])
+
+        o1, o2 = np.var(x), np.var(xx)
+        if o1 >= o2:
+            stats["F"] = o1 ** 2 / o2 ** 2
+        else:
+            stats["F"] = o2 ** 2 / o1 ** 2
+        print(stats["F"])
+        stats["Student"] = (x_avg - xx_avg)/ (np.sqrt((o1**2 / len(x)) + ((o2**2 / len(xx)))))
+        print(stats["Student"])
+        return stats
     @staticmethod
     def get_file_list(folder_path):
         # Получаем список файлов и папок в указанной директории
