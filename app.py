@@ -73,7 +73,7 @@ class App:
         self.graph = Graph(
             parent=self.master,
             x_min=1997,
-            x_max=2023,
+            x_max=2015,
             y_min=0.0,
             y_max=40.0,
             x_tick=1.0,

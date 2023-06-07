@@ -174,11 +174,19 @@ class picture:
                 slope, intercept = np.polyfit(x, y, 1)
                 ax.plot(x, slope*x + intercept, color='blue')
             if func == "logistic":
-                xx = np.array([(np.exp(i) / (1 + np.exp(i))) for i in range(30, 49)])
-                yy = np.array([i for i in range(1997, 2016)])
+                x_max = np.max(x)
+                for i in range(len(x)):
+                    #print(f'Supposedly correct value number {i}:  {np.log(x_max / x[i] - 1) }. X_max is {x_max}, value of x is {x[i]}')
+                    print(f'Supposedly correct value number {i}:  {x_max/(1+np.exp(-0.1*(i+1) + 0.25))}. X_max is {x_max}, value of x is {x[i]}, i is {i}')
+                xx = np.array([x_max/(1+np.exp(-0.1*(i+1) + 0.25)) for i in range(len(x))])
+                yy = np.array([i for i in range(1997, 1997+len(x))])
                 ax.plot(xx, yy)
             if func == "asymptotic":
-                print("placeholder for asymptotic plot")
+                x_max = np.max(x)
+                x_min = np.min(x)
+                xx = np.array([x_max - (x_max - x_min)*np.exp(-0.1 * (i + 1) +0.12) for i in range(len(x))])
+                yy = np.array([i for i in range(1997, 1997 + len(x))])
+                ax.plot(xx, yy)
             """
             x_avg = np.average(x)
             SSE = 0
@@ -219,11 +227,14 @@ class picture:
                 xx = np.array([(i / 9) ** 2 for i in range(30, 49)])
                 yy = np.array([i for i in range(1997, 2016)])
             case "logistic":
-                xx = np.array([(np.exp(i) / (1 + np.exp(i))) for i in range(30, 49)])
-                yy = np.array([i for i in range(1997, 2016)])
+                x_max = np.max(x)
+                xx = np.array([x_max / (1 + np.exp(-0.1 * (i + 1) + 0.25)) for i in range(len(x))])
+                yy = np.array([i for i in range(1997, 1997 + len(x))])
             case "asymptotic":
-                xx = np.array([(i / 9) ** 2 for i in range(30, 49)])
-                yy = np.array([i for i in range(1997, 2016)])
+                x_max = np.max(x)
+                x_min = np.min(x)
+                xx = np.array([x_max - (x_max - x_min) * np.exp(-0.1 * (i + 1) + 0.12) for i in range(len(x))])
+                yy = np.array([i for i in range(1997, 1997 + len(x))])
         print('xx and yy calculated')
         x_avg = np.average(x)
         xx_avg = np.average(xx)
